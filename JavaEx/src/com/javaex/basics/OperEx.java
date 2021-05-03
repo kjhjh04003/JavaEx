@@ -5,8 +5,10 @@ public class OperEx {
 	public static void main(String[] args) {
 		
 		arithOperEx(); // 산술 연사자 메소드 호출
-		//logicOper();
+		logicOper();
 		bitOper();
+		bitShift();
+		conditionalOper();
 
 	}
 	
@@ -123,4 +125,46 @@ public class OperEx {
 		result=~b1;
 		System.out.println("~b1 :"+Integer.toBinaryString(result));
 	}
+	
+	//비트 시프트 연산자
+	//비트 단위 이동
+	private static void bitShift() {
+		int data=1;
+		
+		System.out.println(data);
+		System.out.println("1비트 왼쪽 시프트 : " + Integer.toBinaryString(data <<1));
+		System.out.println("1비트 왼쪽 시프트 : " + (data <<1));
+		
+		System.out.println("4비트 왼쪽 시프트 : " + Integer.toBinaryString(data << 4));
+		System.out.println("4비트 왼쪽 시프트 : " + (data<<4));
+		
+		data=0b1000;
+		System.out.println(data);
+		System.out.println("1비트 오른쪽 시프트 : "+Integer.toBinaryString(data>>1));
+		System.out.println("1비트 오른쪽 시프트 : "+(data >>1));
+
+		System.out.println("3비트 오른쪽 시프트 : "+Integer.toBinaryString(data>>3));
+		System.out.println("3비트 오른쪽 시프트 : "+(data >>3));
+	}
+	
+	//삼항 연산자(조건부 연산자)
+	private static void conditionalOper() {
+		int a=11;
+		
+		//a가 짝수(2의 배수)면 짝수 출력, 짝수가 아니면 홀수 출력(%를 이용하여 나머지가 0인 경우가 짝수)
+		String message;
+		
+		message= a%2==0?"짝수":"홀수";
+		System.out.println("결과값 : " +message);
+		
+		int score=49;
+		
+		//80점 이상이면 Good
+		//80~50점이면 pass
+		//그 이하면 fail
+		//복잡한 비교는 3항으로 나타나지 않고 간단한 조건일 때 사용
+		message=score>=80?"Good":score>=50?"Pass":"Fail";
+		System.out.println("결과값 : "+message);
+	}
+	
 }
