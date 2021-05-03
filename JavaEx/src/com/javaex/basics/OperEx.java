@@ -3,9 +3,63 @@ package com.javaex.basics;
 public class OperEx {
 
 	public static void main(String[] args) {
+		
+		arithOperEx(); // 산술 연사자 메소드 호출
 		//logicOper();
 		bitOper();
+
 	}
+	
+	// 산술연산자
+	private static void arithOperEx() {
+		int a=7;
+		int b=3;
+		
+		//부호 연산자 : + , -
+		System.out.println(-a); //a*-1
+		
+		//사칙연산 : +, -, *, /, %
+		System.out.println(a+"/"+b+"="+(a/b)); //정수/정수=정수값
+		System.out.println(a+"%"+b+"="+(a%b)); //정수%정수=정수값
+		
+		
+		//실제 나눗셈의 결과
+		System.out.println((float)a/(float)b); //int a,b가 float로 변환
+		System.out.println((float)a/b);
+		System.out.println(a/(float)b);
+		
+		System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+		//증감연산자 ++,--
+		//위치에 따라 연산순서가 달라진다.
+		//증감의 목적으로만 사용하는 것이 가독성을 높일 수 있는 코드
+		a=7;
+		System.out.println("a : "+a);
+		System.out.println("전위 증감연산자 : "+ (++a));
+		System.out.println("최종 a : "+a);
+		
+		a=7; //여기서 a를 다시 초기화 하지 않으면 위의 저장된 a의 값 8을 그대로 가지고 오게 된다.
+		System.out.println("a : "+a);
+		System.out.println("후위 증감연산자 : "+ (a++));
+		System.out.println("최종 a : "+a);
+		
+		//나눗셈 보충
+		a=7;
+		//System.out.println(a/0); //에러 발생 -> 정수를 0으로 나누게 되면 ArithmeticException 오류 발생
+		System.out.println((float)a/0); //Infinity
+		
+		//Infinity가 포함된 연산식은 향상 Infinity
+		//Infinity의 체크 확인 => 유한수인지 확인
+		System.out.println("7.0/0은 유한수인가? "+Double.isFinite(7.0/0));
+		//Infinity가 포함된 연산식->Infinity가 나온다.
+		
+		System.out.println("0.0 / 0.0 ? " +(0.0/0.0)); //결과 : NaN(Not A Number) -> non이 포함된 연산식의 결과는 non이 나온다.
+		
+		//NaN인지 확인 - > NaN이면 연산 불가의 의미
+		System.out.println("0.0 / 0.0 is NaN? "+Double.isNaN(0.0/0.0));
+		System.out.println(0.0 / 0.0 +10);
+		
+	}
+	
 	private static void logicOper() {
 		//비교연산, 논리연산
 		//결과로 boolean 반환, 논리값으로 프로그램의 흐름제어 -> 중요
@@ -69,5 +123,4 @@ public class OperEx {
 		result=~b1;
 		System.out.println("~b1 :"+Integer.toBinaryString(result));
 	}
-
 }
