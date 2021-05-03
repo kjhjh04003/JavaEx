@@ -4,11 +4,15 @@ package com.javaex.basics;
 public class Types {
 
 	public static void main(String[] args) {
+		/*
 		integerTypes(); //정수형 메소드 호출
 		floatTypes(); //실수형 메소드 호출
 		booleanEx(); //논리형 메서드 호출
 		charEx(); //문자형 메서드 호출
 		constantEx(); //상수형 메서드 호출
+		implicitCasting(); //암묵적 형변환 메서드 호출
+		*/
+		explicitCasting(); //명시적 형변환 메서드 호출
 	}
 	
 	//정수형 자료 예제
@@ -124,6 +128,41 @@ public class Types {
 		overspeed = speed > SPEED_LIMIT;
 		System.out.println("과속을 했는가 ? " + overspeed);
 		
+	}
+	
+	//암묵적 형변환
+	//표현의 범위 좁은 자료형 -> 넓은 자료형으로 변환 -> 자료의 유실은 일어나지 않는다.
+	//명시적으로 변환하지 않아도 자바가 변환해준다.
+	private static void implicitCasting() {
+		//byte(1) < short(2) < int(4) < long(8)
+		//float(4) < double(8)
+		byte b = 10; //1바이트 정수형
+		System.out.println("byte : "+b);
+		int i=b; //4바이트 정수형
+		System.out.println("int : "+b);
+		long l=i; //8바이트 정수형
+		System.out.println("long : "+l);
+		float f=l; //4바이트 실수형
+		System.out.println("float : "+f); //long 정수형 10이 float 실수형 10.0으로 출력
+		double d=f;
+		System.out.println("double : +d");
+		
+	}
+	
+	//명시적 형변환
+	//표현의 범위가 넓은 자료형 -> 좁은 자료형으로 변환 -> 자료의 유실이 발생할 수도 있다.
+	//개바자가 명시적으로 변환을 해줘야 한다.
+	private static void explicitCasting(){
+		byte b; //1바이트 정수형
+		int i=2021; //4바이트 정수형
+		float f=123.456f; //4바이트 실수형
+		
+		System.out.println(Integer.toBinaryString(i)); //10진수 형태를 2진수 형태로 표현하는 방법. Integer.toBinaryString(i)
+		b=(byte)i; //int형 i를 byte형으로 강제변환
+		System.out.println("int " +i+"->byte "+b);
+		
+		i=(int)f; //float형 f를 int형 정수로 강제 변환
+		System.out.println("float "+f+"->int "+i);
 	}
 
 }
