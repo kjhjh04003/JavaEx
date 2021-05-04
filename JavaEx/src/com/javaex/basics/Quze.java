@@ -35,8 +35,10 @@ public class Quze {
 		int i,j;
 		//for문 이용
 		for(i=0;i<6;i++) {
-			for(j=0;j<6;j=i) {
-				System.out.print("*");
+			System.out.print("*");
+			for(j=0;j<6;j++) {
+				
+								
 			}
 			
 		}
