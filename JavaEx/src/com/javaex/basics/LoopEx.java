@@ -9,7 +9,15 @@ public class LoopEx {
 		//whileEx();
 		//whileGugu();
 		//whileInfinity();
-		dowhileEx();
+
+		//dowhileEx();
+
+
+		//dowhileEx();
+		//forLoofEx();
+		//continueEx();
+		//breakEx();
+		randomEx();
 
 	}
 
@@ -69,5 +77,67 @@ public class LoopEx {
 		}while((value!=0));
 		System.out.println("합계 : "+total);
 		scanner.close();
+	}
+	
+	private static void forLoofEx() {
+		//for문을 이용하여 구구단
+		Scanner scanner=new Scanner(System.in);
+		
+		System.out.print("단을 입력하세요 : ");
+		
+		int dan=scanner.nextInt();
+		
+		//for(제어변수초기화;반복조건체크;증감식)
+		for(int i=1; i<=9; i++) {
+			System.out.println(dan + "*" + i + "=" + (dan*i));
+		}
+		
+		scanner.close();
+	}
+	
+	private static void continueEx() {
+		//1~20 중 2의 배수, 3의 배수를 제외한 나머지를 출력
+		
+		for(int i=1;i<=20;i++) {
+			if(i%2==0||i%3==0)
+				continue; //2의배수이거나 3의 배수이면 뒷 문장을 수행하지 않는다.
+			System.out.println(i);
+		}
+	}
+	
+	private static void breakEx() {
+		//6의 배수이자 14의 배수
+		
+		System.out.println("6의 배수이자 14의 배수인 가장 작은 숫자를 찾아보자.");
+		
+		int i=1; //제어변수
+		while(true) {
+			if(i%6==0 && i%14==0)
+				break;
+			//System.out.println(".");
+			i++;
+		}
+		System.out.println("\n"+i);
+	}
+	
+	private static void randomEx() {
+		//int num=(int)(Math.random()*최대값)+최소값;
+		//1~45 임의의 6개 숫자 출력(쭝복 제외)
+		/*
+		for(int i=1;i<6; i++) {
+			int randnum=(int)(Math.random()*45)+1;
+			System.out.print(randnum+"  ");
+		}
+		System.out.println();
+		*/
+		
+		int i=0;
+		
+		while(i<6) {
+			System.out.println((int)(Math.random()*45)+1);
+			System.out.print("  ");
+			i++;
+		}
+		System.out.println();
 	}
 }
