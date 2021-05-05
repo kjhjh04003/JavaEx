@@ -10,6 +10,7 @@ public class LoopEx {
 		//whileGugu();
 		//whileInfinity();
 		dowhileEx();
+
 	}
 
 	private static void whileEx() {
@@ -55,6 +56,7 @@ public class LoopEx {
 		//최소 1회늰 실행해야 하는 경우 do~while문을 사용
 		//사용자에게 숫자를 입력받아 모두 합산하는 코드
 		//만약 사용자가 0을 입력하면 반복 종료
+		
 		
 		int total=0;
 		int value=0;
