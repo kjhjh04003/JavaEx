@@ -1,7 +1,7 @@
-package com.javaex.oop.goods.v2;
+package com.javaex.oop.goods.v4;
 
-//210506.by 준형 - 필드(데이터)
-//210506.by준형 - 정보에 접근할 수 있는 특수 메서드 : getter / setter 설정
+//210506.by 준형 - this : 객체 자신을 지칭
+//210506.by 준형 -  this() : 클래스 내부의 다른 생성자를 지칭
 public class Goods {
 	
 	//210506.by 준형 - 필드 선언
@@ -9,7 +9,20 @@ public class Goods {
 	private String name;
 	private int price;
 	
+	//생성자
+	public Goods(String name) {
+		this.name=name;
+	}
+	
+	//모든 필드를 초기화하는 생성자 작성
+	public Goods(String name, int price) {
+		//210506.by 준형 - 클래스 내부의 다른 생성자를 호출할 때는 this()를 사용한다.
+		this(name);
+		this.price=price;
+	}
+	
 	//210506.by준형 - Getter(읽기만 가능) / Setter(쓰기만 가능)
+	//setter가 없을 경우 해당 필드는 읽기 전용으로 된다.
 	public String getName() { //210506.by준형 - 다른 클래스에서 접근해야 하기 때문에 public으로 설정
 		return name; //210506.by준형 - private로 설정 된 필드를 반환
 	}
@@ -24,9 +37,9 @@ public class Goods {
 		return price;
 	}
 	
-	public void setPrice(int price) {
-		this.price=price;
-	}
+//	public void setPrice(int price) {
+//		this.price=price;
+//	}
 	// 210506.by준형 - 정보 보여주기 메서드 
 	
 	public void showInfo() {
