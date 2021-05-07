@@ -47,6 +47,6 @@ public class ScoreBoard implements Cloneable{
 		
 		//2. 내부의 참조 객체 복제, 새로할당
 		clone.scores=Arrays.copyOf(scores, scores.length);
-		return clone();
+		return clone;
 	}
 }
