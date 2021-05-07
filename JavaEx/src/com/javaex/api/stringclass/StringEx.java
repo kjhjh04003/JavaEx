@@ -23,6 +23,54 @@ public class StringEx {
 	}
 	
 	private static void usefulMethods() {
+		String str="Java Programming JavaScript Programming";
 		
+		//길이를 잡을 수 있고, 인덱스 접근 가능
+		
+		System.out.println("LENGTH: "+str.length());
+		System.out.println("5번 인덱스의 글자 : "+str.charAt(5));
+		
+		//변환 메서드
+		System.out.println("소문자 변환: "+str.toLowerCase());
+		System.out.println("대문자 변환: "+str.toUpperCase());
+
+		//검색 관련(중요)
+		int idx;
+		idx=str.indexOf("Java");
+		System.out.println("1번째 검색 : "+idx);
+		
+		idx=str.indexOf("Java", idx+4);
+		System.out.println("2번째 검색 : "+idx);
+		
+		idx=str.indexOf("Java", idx+4);
+		System.out.println("3번쨰 검색 : "+idx); //	-1이 나오는 경우는 찾는 것이 없다는 뜻이다.
+		
+		//역방향 검색
+		System.out.println("역방향 검색 : "+str.lastIndexOf("Java"));
+		
+		//문자열 추출
+		System.out.println("substring : "+str.substring(5)); //5번 인덱스부터 끝까지 출력
+		System.out.println("substring : "+str.substring(5,16));
+	
+		//치환
+		System.out.println("replace : "+str.replaceAll("Java", "java"));
+	
+		//공백문자 제거
+		String s2="                    Hello           ";
+		String s3="         . Java           ";
+		
+		System.out.println(s2+s3); //공백 포함 출력
+		System.out.println(s2.trim()+s3.trim());
+	
+		//문자 분할 : split
+		String[] chunks=str.split(" "); //공백 문자를 기준으로 문자열 분할
+		for(String chunk: chunks) {
+			System.out.println("WORD: "+chunk);
+		}
+		
+		//문자열 비교 : Unicode 비교
+		//같으면 0, 앞의 것이 작으면(먼저면) 음수, 크면(뒤면) 양수
+		System.out.println("ABC".compareTo("ABD"));
+		System.out.println("ABD".compareTo("ABC"));
 	}
 }

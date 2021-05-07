@@ -27,7 +27,7 @@ public class ScoreBoard implements Cloneable{
 
 	@Override
 	public String toString() {
-		return super.toString();
+		return "ScoreBoard [Scores="+Arrays.toString(scores)+"]";
 	}
 	
 	public ScoreBoard getClone() {
