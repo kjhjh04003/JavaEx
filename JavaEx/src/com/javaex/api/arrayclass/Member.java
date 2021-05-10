@@ -10,6 +10,9 @@ public class Member implements Comparable{
 		this.name=name;
 	}
 
+	
+	//toString(), compareTo는 JVM이 필요할 때 호출하여 사용한다.
+	//우리는 JVM에게 해당 메서드를 어떻게 수행할 건지를 알려주는 코드를 작성하는 것이다.
 	@Override
 	public String toString() {
 		return "Member [name=" + name + "]";
