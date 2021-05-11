@@ -7,8 +7,8 @@ public class HashSetEx {
 
 	public static void main(String[] args) {
 
-//		hashSetBasic();
-		hashsetCumstom();
+		hashSetBasic();
+//		hashsetCumstom();
 
 	}
 
