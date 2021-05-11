@@ -23,19 +23,19 @@ public class Chapter5 {
 			System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
 			System.out.println(" 1.학생수 | 2.점수입력 | 3.점수리스트 | 4.분석 | 5.종료 ");
 			System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-			System.out.println("선택 > ");
+			System.out.print("선택 > ");
 			
 			int selectNo=scanner.nextInt();
 			
 			if(selectNo==1) {
 				System.out.print("학생수> ");
 				studentNum=scanner.nextInt();
+				scores=new int[studentNum]; //학생수만큼 scores변수의 크기를 생성
 		
 			}else if(selectNo==2) {
 				for(int i=0;i<studentNum;i++) {
-					System.out.print("scores["+i+"]> "+scanner.nextInt(i));
-//					scores[i]=scanner.nextInt(i);
-					System.out.println();
+					System.out.print("scores["+i+"]> ");
+					scores[i]=scanner.nextInt();
 				}
 				
 			}else if(selectNo==3) {
