@@ -2,6 +2,7 @@ package com.javaex.api.collection.list;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class ListEx {
@@ -42,6 +43,13 @@ public class ListEx {
 		System.out.println(lst);
 
 		// TODO: 루프
+		// List,set의 경우 => Iterator 이용
+		Iterator<String> it = lst.iterator();
+		while (it.hasNext()) { // 뒤에 요소가 남아있는지 확인
+			String item = it.next();
+			System.out.print(item + " ");
+		}
+		System.out.println();
 
 		// 비우기
 		lst.clear();

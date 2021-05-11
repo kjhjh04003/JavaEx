@@ -1,5 +1,6 @@
 package com.javaex.api.collection.list;
 
+import java.util.Enumeration;
 import java.util.Vector;
 
 public class VectorEx {
@@ -19,39 +20,45 @@ public class VectorEx {
 		}
 		System.out.println("Size : " + v.size() + "Capacity : " + v.capacity());
 
-		v.addElement(11); //허용량 자동 증가
+		v.addElement(11); // 허용량 자동 증가
 		System.out.println("Size : " + v.size() + "Capacity : " + v.capacity());
 
 		System.out.println("v : " + v);
 
-		v.insertElementAt(12, 5); //12객체를 5번 인덱스에 추가
-		System.out.println("v : " + v); 
-		
-		//객체 조회 : 특정 인덱스의 객체 조회
-		System.out.println("5번 인덱스 객체 : "+v.elementAt(5));
-		
-		//객체 인덱스 조회
-		System.out.println("12의 인덱스 조회 : "+ v.indexOf(12));
-		
-		//없는 객체의 인덱스 조회 : -1
-		System.out.println("없는 객체 0의 인덱스 조회 : "+v.indexOf(0));
-		
-		//포함 여부 확인 
-		//포함 : true / 미포함 : false
+		v.insertElementAt(12, 5); // 12객체를 5번 인덱스에 추가
+		System.out.println("v : " + v);
+
+		// 객체 조회 : 특정 인덱스의 객체 조회
+		System.out.println("5번 인덱스 객체 : " + v.elementAt(5));
+
+		// 객체 인덱스 조회
+		System.out.println("12의 인덱스 조회 : " + v.indexOf(12));
+
+		// 없는 객체의 인덱스 조회 : -1
+		System.out.println("없는 객체 0의 인덱스 조회 : " + v.indexOf(0));
+
+		// 포함 여부 확인
+		// 포함 : true / 미포함 : false
 		System.out.println("v가 10을 포함? " + v.contains(10));
-		
-		//내부 요소들을 루프로 접근
-		for(int i=0;i<v.size();i++) {
-			Integer item=(Integer)v.elementAt(i);
-			System.out.print(item+ " ");
-		}System.out.println();
-		
-		//TODO:Loop 개선
-		
-		//버퍼 비우기
+
+		// 내부 요소들을 루프로 접근
+		for (int i = 0; i < v.size(); i++) {
+			Integer item = (Integer) v.elementAt(i);
+			System.out.print(item + " ");
+		}
+		System.out.println();
+
+		// TODO:Loop 개선
+		Enumeration e = v.elements(); // 각 요소에 접근하는 접근자들
+		while (e.hasMoreElements()) { // 뒤에 요소가 더 있는가?
+			System.out.print(e.nextElement() + " ");
+		}
+		System.out.println();
+
+		// 버퍼 비우기
 		v.clear();
-		System.out.println("v : "+v);
-		System.out.println("Size : "+v.size()+"Capacity : "+v.capacity());
+		System.out.println("v : " + v);
+		System.out.println("Size : " + v.size() + "Capacity : " + v.capacity());
 	}
 
 }

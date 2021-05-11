@@ -1,6 +1,7 @@
 package com.javaex.api.collection.hash;
 
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class HashSetEx {
 
@@ -27,32 +28,38 @@ public class HashSetEx {
 		System.out.println("HASHSET : " + hs);
 		System.out.println("SIZE : " + hs.size());
 
-		//포함여부 확인
+		// 포함여부 확인
 		System.out.println(hs.contains("C++"));
 		System.out.println(hs.contains("Linux"));
-		
-		//객체 삭제
+
+		// 객체 삭제
 		hs.remove("C++");
-		System.out.println("HASHSET : "+hs);
+		System.out.println("HASHSET : " + hs);
 	}
 
 	private static void hashsetCumstom() {
-		//사용자 정의 클래스 - HashSet
-		HashSet<Student> hs=new HashSet<>();
-		
-		Student s1=new Student("홍길동", 10);
-		Student s2=new Student("홍길동", 10);
-		Student s3=new Student("홍길동", 20);
-		
+		// 사용자 정의 클래스 - HashSet
+		HashSet<Student> hs = new HashSet<>();
+
+		Student s1 = new Student("홍길동", 10);
+		Student s2 = new Student("홍길동", 10);
+		Student s3 = new Student("홍길동", 20);
+
 		hs.add(s1);
 		hs.add(s2);
 		hs.add(s3);
-		
+
 		System.out.println(hs);
-		
-		//포함 여부 확인
-		System.out.println("홍길동, 10번 학생이 있는가? "+
-		hs.contains(new Student("홍길동",10)));
-		
+
+		// 포함 여부 확인
+		System.out.println("홍길동, 10번 학생이 있는가? " + hs.contains(new Student("홍길동", 10)));
+
+		// 반복 iterator이용
+		Iterator<Student> it = hs.iterator();
+		while (it.hasNext()) {
+			Student st = it.next();
+			System.out.print(st + " ");
+		}
+		System.out.println();
 	}
 }
