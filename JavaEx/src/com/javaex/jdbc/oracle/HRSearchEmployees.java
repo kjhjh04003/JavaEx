@@ -12,43 +12,43 @@ public class HRSearchEmployees {
 		Connection conn = null; // 커넥션
 		Statement stmt = null; // 문맥
 		ResultSet rs = null; // 결과 셋
-		Scanner scanner=new Scanner(System.in);
-		
+		Scanner scanner = new Scanner(System.in);
+
 		try {
 			conn = DBConfig.getConnection();
-			
+
 			System.out.print("검색어 : ");
 			String keyword = scanner.next();
-			
-			String sql = "SELECT first_name, last_name, email, phone_number, hire_date "+
-			"FROM employees WHERE lower(first_name) LIKE '%" + keyword.toLowerCase() + 
-			"%' OR " + "lower(last_name) LIKE '%"+ keyword.toLowerCase() + "%'";
-			System.out.println("Query : "+sql);
-			
+
+			String sql = "SELECT first_name, last_name, email, phone_number, hire_date "
+					+ "FROM employees WHERE lower(first_name) LIKE '%" + keyword.toLowerCase() + "%' OR "
+					+ "lower(last_name) LIKE '%" + keyword.toLowerCase() + "%'";
+			System.out.println("Query : " + sql);
+
 			stmt = conn.createStatement();
 			// 쿼리 수행
-			rs=stmt.executeQuery(sql);
-			
-			//Loop
-			while(rs.next()) {
-				String firstName=rs.getString(1);
-				String lastName=rs.getString(2);
-				String email=rs.getString("email");
-				String phoneNumber=rs.getString("phone_number");
-				String hireDate=rs.getString("hire_date"); //java.util.date
-				
-				//출력
+			rs = stmt.executeQuery(sql);
+
+			// Loop
+			while (rs.next()) {
+				String firstName = rs.getString(1);
+				String lastName = rs.getString(2);
+				String email = rs.getString("email");
+				String phoneNumber = rs.getString("phone_number");
+				String hireDate = rs.getString("hire_date"); // java.util.date
+
+				// 출력
 				System.out.printf("%s %s : %s, %s, %s%n", firstName, lastName, email, phoneNumber, hireDate);
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				rs.close();
 				stmt.close();
 				conn.close();
-			}catch(Exception e) {
-				
+			} catch (Exception e) {
+
 			}
 		}
 	}

@@ -18,47 +18,47 @@ public class HRSalaryPstmt {
 		int minSalary = scanner.nextInt();
 		System.out.print("최대급여> ");
 		int maxSalary = scanner.nextInt();
-		
-		if(minSalary > maxSalary) {
+
+		if (minSalary > maxSalary) {
 			// 값을 뒤집어 준다.
 			int temp = minSalary;
-			minSalary=maxSalary;
-			maxSalary=minSalary;
+			minSalary = maxSalary;
+			maxSalary = minSalary;
 		}
-		
+
 		scanner.close();
-		
+
 		try {
-			conn=DBConfig.getConnection();
-			
-			//실행 계획 준비
-			String temlate="SELECT first_name ||' '|| last_name as name, salary " +
-						"FROM employees WHERE salary BETWEEN ? AND ?"; // 동적으로 연결할 데이터 영역은 ?
+			conn = DBConfig.getConnection();
+
+			// 실행 계획 준비
+			String temlate = "SELECT first_name ||' '|| last_name as name, salary "
+					+ "FROM employees WHERE salary BETWEEN ? AND ?"; // 동적으로 연결할 데이터 영역은 ?
 			pstmt = conn.prepareStatement(temlate);
-			
+
 			// 동적 데이터 바인딩
 			pstmt.setInt(1, minSalary);
 			pstmt.setInt(2, maxSalary);
-			
-			//쿼리 수행
-			rs=pstmt.executeQuery();
-			
-			while(rs.next()) {
-				String name=rs.getString(1);
-				int salary=rs.getInt(2);
-				
-				//출력
+
+			// 쿼리 수행
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String name = rs.getString(1);
+				int salary = rs.getInt(2);
+
+				// 출력
 				System.out.printf("%s - %d%n", name, salary);
 			}
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				rs.close();
 				pstmt.close();
 				conn.close();
-			}catch(Exception e) {
-				
+			} catch (Exception e) {
+
 			}
 		}
 
