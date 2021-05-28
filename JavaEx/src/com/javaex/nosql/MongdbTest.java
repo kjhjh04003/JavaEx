@@ -1,11 +1,14 @@
 package com.javaex.nosql;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
+import com.mongodb.MongoClientSettings;
+import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -38,9 +41,9 @@ public class MongdbTest {
 		// Filters()
 		// 조건 Bson 생성
 //		Bson bsonFilter = Filters.and(Filters.eq("species", "인간"), Filters.eq("gender", "FEMALE"));
-		
+
 		// species == 인간 or gender == FEMALE인 문서들
-		Bson bsonFilter = Filters.or(Filters.eq("species", "인간"), Filters.eq("gender","FEMALE"));
+		Bson bsonFilter = Filters.or(Filters.eq("species", "인간"), Filters.eq("gender", "FEMALE"));
 		System.out.println("Filter:" + bsonFilter);
 
 		MongoCollection<Document> coll = getCollection(DB_NAME, COLL_NAME);
@@ -140,7 +143,17 @@ public class MongdbTest {
 	private static MongoClient connect() {
 		// 몽고 DB접속
 		// MongoClient는 JDBC의 connection과 같은 역할
-		MongoClient client = MongoClients.create();
+
+		// 기본값 사용 : ip -> localhost, port -> 27017
+		// MongoClient client = MongoClients.create();
+
+		// 만약 접속 정보가 기본값이 아니라면
+		// 사용자 정의
+		MongoClient client = MongoClients
+				.create(MongoClientSettings.builder()
+						.applyToClusterSettings(
+								builder -> builder.hosts(Arrays.asList(new ServerAddress(MONGODB_IP, MONGODB_PORT))))
+						.build());
 
 		System.out.println(client);
 		return client;
